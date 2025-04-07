@@ -41,14 +41,14 @@ class UserRepository
     {
         $query = User::query();
         
-        // Apply name filter
+
         if (!empty($filters['name'])) {
             $query->where('name', 'LIKE', "%{$filters['name']}%");
         }
         
-        // Apply CPF filter
+
         if (!empty($filters['cpf'])) {
-            // Remove non-numeric characters
+
             $cpf = preg_replace('/[^0-9]/', '', $filters['cpf']);
             $query->where('cpf', 'LIKE', "%{$cpf}%");
         }

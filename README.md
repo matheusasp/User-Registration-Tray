@@ -56,7 +56,10 @@ docker-compose up -d
 
 ### Back-End
 ```bash
-docker exec -it app php artisan migrate --seed
+docker exec -it laravel_app php artisan migrate --seed
+docker exec -it laravel_app php artisan serve --host=0.0.0.0 --port=8000
+
+
 ```
 
 ### Front-End
@@ -66,7 +69,7 @@ docker exec -it frontend npm run dev
 ```
 
 ### Acesso
-- Front-end: `http://localhost:5173`
+- Front-end: `http://localhost:8080`
 - API: `http://localhost:8000`
 
 ## 🚀 Funcionalidades

@@ -48,11 +48,11 @@ class GoogleAuthService
             $token = $this->client->fetchAccessTokenWithAuthCode($code);
             $this->client->setAccessToken($token);
             
-            // Get user info
+
             $service = new Google_Service_Oauth2($this->client);
             $userInfo = $service->userinfo->get();
             
-            // Create or update user
+      
 
             $user = User::updateOrCreate(
                 ['email' => $userInfo->getEmail()],
