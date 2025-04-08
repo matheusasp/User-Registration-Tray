@@ -58,14 +58,12 @@ docker-compose up -d
 ```bash
 docker exec -it laravel_app php artisan migrate --seed
 docker exec -it laravel_app php artisan serve --host=0.0.0.0 --port=8000
-
-
 ```
 
 ### Front-End
 ```bash
-docker exec -it frontend npm install
-docker exec -it frontend npm run dev
+docker exec -it vue_app npm install
+docker exec -it vue_app npm run dev
 ```
 
 ### Acesso
@@ -80,8 +78,8 @@ docker exec -it frontend npm run dev
 - Filtro otimizado para grandes volumes de dados
 
 ## ✉️ Envio de E-mail
-O envio de e-mail é feito com base no token do Google salvo. O processo é assíncrono via fila e utiliza a biblioteca oficial do Google.
-Necessário configurar no .env as variáveis relacionadas ao e-mail e ao google
+O envio de e-mail é feito com base no token do Google salvo. O processo é assíncrono via fila e utiliza a biblioteca oficial do Google.  
+Necessário configurar no `.env` as variáveis relacionadas ao e-mail e ao Google.
 
 ## 🔧 Testes
 
@@ -102,5 +100,39 @@ docker exec -it frontend npm run test
 - Banco de dados com indexes em `name` e `cpf` para melhor performance nos filtros
 - Front-end responsivo e com foco em usabilidade
 
+---
 
+## 🛠️ Problemas com Docker?
 
+Caso você enfrente algum problema ao rodar o projeto com Docker, é possível executar o sistema localmente:
+
+### Back-End (Laravel)
+1. Instale as dependências com o Composer:
+   ```bash
+   composer install
+   ```
+2. Copie o `.env.example` para `.env` e configure as variáveis de ambiente.
+3. Gere a key do Laravel:
+   ```bash
+   php artisan key:generate
+   ```
+4. Execute as migrations e seeders:
+   ```bash
+   php artisan migrate --seed
+   ```
+5. Inicie o servidor:
+   ```bash
+   php artisan serve
+   ```
+
+### Front-End (Vue.js)
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Inicie a aplicação:
+   ```bash
+   npm run dev
+   ```
+
+Certifique-se de que o back-end esteja rodando na mesma porta configurada no front para o consumo da API.

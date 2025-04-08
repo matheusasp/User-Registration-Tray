@@ -25,6 +25,7 @@ WORKDIR /var/www/html
 # Copy application files
 COPY . /var/www/html
 
+RUN composer config --global process-timeout 900
 # Install dependencies
 RUN composer install
 
